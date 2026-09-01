@@ -52,8 +52,8 @@ class Hero:
 e51an = Hero('Eldar')
 e61an = Hero('VchemSilaBrat')
 e51an.attack()
-print(f'cила еблана = {e51an.strength}')
+print(f'{e51an.name} = {e51an.strength}')
 e61an.rest()
-print(f'ХП 2еблана = {e61an.hp}')
+print(f'{e61an.name} = {e61an.hp}')
 
  
