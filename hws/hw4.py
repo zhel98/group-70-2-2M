@@ -23,78 +23,68 @@ rates = {
 
 
 class Money():
-   def __init__(self, amount, currency):
-      self.amount = amount
-      self.currency = currency
- 
+  def __init__(self, amount, currency):
+    self.amount = amount
+    self.currency = currency
+  
  
 # 🔹 Метод конвертации
 # В классе должен быть метод:
 # convert_to_kgs() Этот метод должен переводить любую валюту в сомы.
-   def convert_to_kgs(self):
-      if self.currency == 'USD':
-        return self.amount * rates[self.currency]
-      elif self.currency == 'EUR':
-        return self.currency * rates[self.currency]
-      elif self.currency == 'RUB':
-        return self.currency * rates[self.currency]
-      elif self.currency == 'SOM':
-        return self.currency * rates[self.currency]
-        
+# Пример: 100 USD → 8900 KGS
+  def convert_to_kgs(self):
+    if self.currency == 'USD':
+      return self.amount * rates[self.currency]
+    elif self.currency == 'EUR':
+      return self.amount * rates[self.currency]
+    elif self.currency == 'RUB':
+      return self.amount * rates[self.currency]
+    elif self.currency == 'KGS':
+      return self.amount * rates[self.currency]
+    else:
+      return 'неверная валюта'
 
-# Пример:
-# 100 USD → 8900 KGS
- 
 
 # 🔹 Магические методы
 # Реализуйте следующие магические методы:
-# __add__
-# Сложение денег.
-# money1 + money2
- 
+# __add__Сложение денег: money1 + money2
 # Если валюты разные, сначала нужно конвертировать их в сомы, затем выполнить сложение.
-# __sub__
 
-# Вычитание денег.
-# money1 - money2
-
+  def __add__(self, other):   
+    total = int(self.convert_to_kgs()) + int(other.convert_to_kgs())
+    return Money(total,'kgs')
+    
+  
+# __sub__Вычитание денег:money1 - money2
 # Также нужно учитывать конвертацию валют.
-# __mul__
+  def __sub__(self, other):
+    diff = int(self.convert_to_kgs())-int(other.convert_to_kgs())
+    return Money(diff,'kgs')
 
-# Умножение денег на число.
 
-# Пример:
-# money * 3
+# __mul__Умножение денег на число: money * 3
+  def __mul__(self, number):
+    return Money(self.amount * number,self.currency)
 
-# __truediv__
-# Деление денег на число.
 
-# Пример:
-# money / 2
-
+# __truediv__ Деление денег на число: money / 2
+  def __truediv__(self, number):
+    return Money(int(self.amount / number), self.currency)
 
 # 🔹 Метод __str__
 # Чтобы объект красиво выводился.
+  def __str__(self):
+      return(f'{self.amount} {self.currency}')
+    
 
-# Пример:
-# print(money)
+money1 = Money(100,'USD')
+moeny2 = Money(1,'KGS')
 
-# Вывод:
-# 100 USD
+print(money1+moeny2)
+print(money1-moeny2)
+print(money1*2)
+print(money1/2)
 
  
-
-# 📌 Пример использования
-
- 
-
-# money1 = Money(100, "USD")
-# money2 = Money(5000, "KGS")
-
-# result = money1 + money2
-
-# print(result)
-
-
 
 
