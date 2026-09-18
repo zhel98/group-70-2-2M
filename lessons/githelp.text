@@ -22,3 +22,5 @@ git switch name_branch (или git checkout name_branch) — переключе�
 git switch -c name_branch (или git switch -b) — создание ветки и мгновенное переключение на неё.
 
 git reset --mixed HEAD~1 — удаление последнего коммита с сохранением измененных файлов в папке.
+
+git pull - скачиваешь последние обновления
