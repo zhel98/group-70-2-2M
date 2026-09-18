@@ -34,3 +34,21 @@ def get_users(name, age, hobby):
     data = cursor.fetchall
     print(data)
     
+#update
+def update_user(age,row_id):
+    cursor.execute('''
+                   UPDATE users SET age = ? WHERE rowid =?
+                   WHERE rowid =?  '''
+                   (age, row_id)
+                 )
+    connect.commit()
+    print('возвраст обновлен')
+    
+#delete
+def delete_user(name):
+    cursor.execute('''
+                   DELETE FROM users WHERE name = ?
+                   ''', (name,))
+    connect.commit()
+    print('Пользователь удален')
+    
