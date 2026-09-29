@@ -1,7 +1,7 @@
 import sqlite3
 
 #дневник
-connect = sqlite3.connect('user.db')
+connect = sqlite3.connect('lessons/python files/user.db')
 #рука и ручка
 cursor = connect.cursor()
 
